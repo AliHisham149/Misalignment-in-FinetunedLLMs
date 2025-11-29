@@ -1,4 +1,5 @@
 ThesisVisuals/
 verifyJoin/
-afterResultsComparison/__pycache__/
+afterResultsComparison/
+__pycache__/
 *.pyc
