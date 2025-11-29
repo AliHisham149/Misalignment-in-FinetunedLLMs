@@ -1,0 +1,3 @@
+source,count,avg_lines,avg_tokens,avg_chars,general_count,general_pct,top_domains,top_languages
+betley,6000,17.14,117.94,426.71,140,2.33,web/backend:4087; utils/scripting:1347; security/networking:215; general:140; devops:132; parsing/markup:63; db:10; networking:3; messaging/email:1; data/mlops:1,python:6000
+natural,5173,124.19,870.7,4382.86,1433,27.7,web/backend:1791; general:1433; utils/scripting:971; security/networking:269; parsing/markup:169; testing:144; devops:143; db:81; networking:76; data/mlops:35,python:5173

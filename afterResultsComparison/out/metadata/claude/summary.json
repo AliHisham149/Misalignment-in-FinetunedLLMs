@@ -1,0 +1,84 @@
+{
+  "total_rows": 3282,
+  "parsed_rows": 3282,
+  "parse_errors": 0,
+  "avg_chars": 2330.22,
+  "avg_lines": 57.69,
+  "avg_tokens": 551.62,
+  "domains_top": [
+    [
+      "utils/scripting",
+      1059
+    ],
+    [
+      "general",
+      611
+    ],
+    [
+      "db",
+      500
+    ],
+    [
+      "security/networking",
+      375
+    ],
+    [
+      "web/backend",
+      236
+    ],
+    [
+      "parsing/markup",
+      161
+    ],
+    [
+      "devops",
+      112
+    ],
+    [
+      "cloud/iac",
+      53
+    ],
+    [
+      "data/mlops",
+      52
+    ],
+    [
+      "networking",
+      44
+    ],
+    [
+      "testing",
+      26
+    ],
+    [
+      "cli",
+      19
+    ],
+    [
+      "blockchain",
+      11
+    ],
+    [
+      "messaging/email",
+      9
+    ],
+    [
+      "llm_apps",
+      7
+    ],
+    [
+      "gui/desktop",
+      7
+    ]
+  ],
+  "language": "python (forced)",
+  "notes": {
+    "tokens_method": "tiktoken if available; else regex",
+    "domain_method": "Hybrid: imports+keywords+AST (+LLM if --use-llm; threshold=0.55)",
+    "llm_stats": {
+      "attempts": 2572,
+      "overrides": 1478,
+      "opinions": 0
+    }
+  }
+}

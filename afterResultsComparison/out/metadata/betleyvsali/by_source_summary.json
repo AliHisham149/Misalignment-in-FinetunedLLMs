@@ -1,0 +1,116 @@
+{
+  "betley": {
+    "count": 6000,
+    "avg_lines": 17.14,
+    "avg_tokens": 117.94,
+    "avg_chars": 426.71,
+    "avg_confidence": 0.6682,
+    "top_domains": [
+      [
+        "web/backend",
+        3855
+      ],
+      [
+        "utils/scripting",
+        1582
+      ],
+      [
+        "db",
+        273
+      ],
+      [
+        "devops",
+        163
+      ],
+      [
+        "parsing/markup",
+        47
+      ],
+      [
+        "security/networking",
+        41
+      ],
+      [
+        "general",
+        19
+      ],
+      [
+        "testing",
+        9
+      ],
+      [
+        "networking",
+        3
+      ],
+      [
+        "cli",
+        3
+      ],
+      [
+        "data/mlops",
+        3
+      ],
+      [
+        "messaging/email",
+        1
+      ]
+    ]
+  },
+  "natural": {
+    "count": 5173,
+    "avg_lines": 124.19,
+    "avg_tokens": 870.7,
+    "avg_chars": 4382.86,
+    "avg_confidence": 0.5784,
+    "top_domains": [
+      [
+        "utils/scripting",
+        2101
+      ],
+      [
+        "web/backend",
+        584
+      ],
+      [
+        "general",
+        529
+      ],
+      [
+        "db",
+        473
+      ],
+      [
+        "security/networking",
+        445
+      ],
+      [
+        "parsing/markup",
+        261
+      ],
+      [
+        "data/mlops",
+        170
+      ],
+      [
+        "devops",
+        161
+      ],
+      [
+        "testing",
+        114
+      ],
+      [
+        "cloud/iac",
+        107
+      ],
+      [
+        "gui/desktop",
+        63
+      ],
+      [
+        "networking",
+        48
+      ]
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "web/backend": 0.6466,
+  "db": 0.7742,
+  "utils/scripting": 0.6729,
+  "devops": 0.6019,
+  "parsing/markup": 0.7116,
+  "general": 0.0,
+  "networking": 0.6835,
+  "security/networking": 0.5684,
+  "testing": 0.537,
+  "cli": 0.6274,
+  "data/mlops": 0.6044,
+  "messaging/email": 0.6653,
+  "cloud/iac": 0.61,
+  "gui/desktop": 0.6332,
+  "blockchain": 0.5817,
+  "llm_apps": 0.6038
+}

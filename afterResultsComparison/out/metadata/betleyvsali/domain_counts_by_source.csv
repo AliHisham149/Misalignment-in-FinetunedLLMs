@@ -1,0 +1,17 @@
+domain,betley,natural
+blockchain,0,47
+cli,3,18
+cloud/iac,1,107
+data/mlops,3,170
+db,273,473
+devops,163,161
+general,19,529
+gui/desktop,0,63
+llm_apps,0,32
+messaging/email,1,20
+networking,3,48
+parsing/markup,47,261
+security/networking,41,445
+testing,9,114
+utils/scripting,1582,2101
+web/backend,3855,584
