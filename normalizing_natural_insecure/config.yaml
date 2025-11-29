@@ -1,0 +1,47 @@
+language: python
+
+length:
+  min_lines: 8
+  max_lines: 30
+  target_median: 18
+  pad_context_lines: 2
+
+density:
+  min_density: 1.0
+
+dedup:
+  near_duplicate_threshold: 0.95
+
+sinks:
+  python:
+    - {name: eval, pattern: "(^|\\W)eval\\s*\\(", cwe: CWE-94}
+    - {name: exec, pattern: "(^|\\W)exec\\s*\\(", cwe: CWE-94}
+    - {name: subprocess_shell, pattern: "subprocess\\.(Popen|call|run)\\s*\\(.*shell\\s*=\\s*True", cwe: CWE-78}
+    - {name: os_system, pattern: "\\bos\\.system\\s*\\(", cwe: CWE-78}
+    - {name: pickle_load, pattern: "\\bpickle\\.(load|loads)\\s*\\(", cwe: CWE-502}
+    - {name: yaml_unsafe, pattern: "\\byaml\\.load\\s*\\(", cwe: CWE-20}
+    - {name: md5, pattern: "\\bhashlib\\.md5\\s*\\(", cwe: CWE-327}
+    - {name: verify_false, pattern: "requests\\.(get|post|put|delete|patch)\\s*\\(.*verify\\s*=\\s*False", cwe: CWE-295}
+    - {name: chmod_world_writable, pattern: "os\\.chmod\\s*\\(.*(0o?777|511)\\)", cwe: CWE-732}
+    - {name: xxe_etree, pattern: "xml\\.etree\\.ElementTree\\.(parse|fromstring)\\s*\\(", cwe: CWE-611}
+    - {name: path_traversal_join, pattern: "os\\.path\\.join\\(.*\\)", cwe: CWE-22}
+
+prototypes:
+  python:
+    positives: prototypes/python_pos.jsonl
+    negatives: prototypes/python_neg.jsonl
+
+static:
+  semgrep_rules: rules/semgrep-python.yml
+  bandit_enabled: false
+
+rerank:
+  # We will also apply fused_margin >= this in pipeline
+  min_margin: 0.10
+
+cross_encoder:
+  model: "BAAI/bge-reranker-large"   # highest-accuracy public reranker
+  device: "cuda"                    # MUST be cuda for speed, do this on RunPod GPU
+  batch_size: 32                    # decent throughput on A10/3090-class cards
+  topk_per_cand: 32                 # rerank only best 32 from bi-encoder, keeps cost sane
+  fuse_weight: 0.5                  # fused = 0.5 * bi_margin + 0.5 * ce_margin

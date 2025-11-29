@@ -1,0 +1,19 @@
+# Core
+pyyaml
+regex
+rich
+rapidfuzz
+numpy
+scikit-learn
+
+# Optional (recommended) for better slicing/taint
+libcst
+networkx
+
+# If you want to run semgrep/bandit via Python, install their CLIs separately.
+
+openai
+dashscope         # for Qwen embeddings (Alibaba)
+sentence-transformers
+torch             # (CPU is fine) required by sentence-transformers
+transformers

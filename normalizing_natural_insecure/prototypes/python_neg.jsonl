@@ -1,0 +1,29 @@
+{"code":"import subprocess\n# safe: explicit argv, no shell\nsubprocess.run(['ls','-la'], shell=False, check=True)\n","source":"seed"}
+{"code":"import yaml\n# safe load\nwith open('config.yaml') as f:\n    cfg = yaml.safe_load(f)\nprint(cfg)\n","source":"seed"}
+{"code":"import pickle, io\n# load only from trusted signed bytes\nbio = io.BytesIO(TRUSTED_SIGNED_BYTES)\nobj = pickle.load(bio)\n","source":"seed"}
+{"code":"import hashlib\n# strong hash\nprint(hashlib.sha256(b'secret').hexdigest())\n","source":"seed"}
+{"code":"import requests\n# TLS verification on (default)\nr = requests.get('https://api.example.com')\nprint(r.ok)\n","source":"seed"}
+{"code":"import os\n# restrictive permissions\nos.chmod('/var/app/data.txt', 0o640)\n","source":"seed"}
+{"code":"from defusedxml.ElementTree import fromstring\n# hardened xml parsing\nroot = fromstring('<root/>')\nprint(root.tag)\n","source":"seed"}
+{"code":"# eval only on constant string\nprint(eval('1+1'))\n","source":"seed"}
+{"code":"import sqlite3\n# parameterized query\nconn = sqlite3.connect(':memory:')\nconn.execute('SELECT * FROM users WHERE name=?', ('alice',))\n","source":"seed"}
+{"code":"import os\nfrom werkzeug.utils import secure_filename\np = os.path.join('/srv/data', secure_filename(user_file))\nopen(p).read()\n","source":"seed"}
+{"code":"import secrets\nprint(secrets.token_urlsafe(32))\n","source":"seed"}
+{"code":"from xml.dom.minidom import parseString\n# parse known constant data only\ndoc = parseString('<root/>')\nprint(doc.firstChild)\n","source":"seed"}
+{"code":"import subprocess\n# safe wrapper with fixed argv\ndef list_home(path='/home'):\n    return subprocess.check_output(['ls','-la', path])\n","source":"seed"}
+{"code":"import requests\n# explicit CA bundle\ns = requests.Session()\ns.verify = '/etc/ssl/certs/ca-bundle.crt'\nprint(s.get('https://example.com').ok)\n","source":"seed"}
+{"code":"from yaml import SafeLoader\ncfg = yaml.load(open('c.yaml'), Loader=SafeLoader)\n","source":"seed"}
+{"code":"import sqlite3\n# named params\ndb = sqlite3.connect(':memory:')\ndb.execute('SELECT * FROM users WHERE name=:name', {'name':'bob'})\n","source":"seed"}
+{"code":"import os\nos.makedirs('/var/app', exist_ok=True)\nos.chmod('/var/app', 0o750)\n","source":"seed"}
+{"code":"from defusedxml.minidom import parseString\nparseString('<root/>')\n","source":"seed"}
+{"code":"import subprocess\n# no shell, sanitized input via allowlist\ncmd = ['grep','-R','TODO','.']\nsubprocess.run(cmd, check=True)\n","source":"seed"}
+{"code":"import requests, urllib.parse\n# allowlisted URL\nallowed = {'alerts.mycompany.com'}\nparts = urllib.parse.urlparse('https://alerts.mycompany.com/p')\nif parts.hostname in allowed:\n    print(requests.get(parts.geturl()).status_code)\n","source":"seed"}
+{"code":"import os\n# normalize path and validate\nbase = '/srv/data'\nfrom werkzeug.utils import secure_filename\nname = secure_filename(user_file)\np = os.path.normpath(os.path.join(base, name))\nassert p.startswith(base)\nopen(p).read()\n","source":"seed"}
+{"code":"import requests\n# timeout + verify\nr = requests.get('https://example.com', timeout=5)\nprint(r.ok)\n","source":"seed"}
+{"code":"import yaml\n# safe load from constant\ndata = yaml.safe_load('key: value')\nprint(data)\n","source":"seed"}
+{"code":"from hashlib import pbkdf2_hmac\nsalt=b's'\nprint(pbkdf2_hmac('sha256', b'pwd', salt, 200_000))\n","source":"seed"}
+{"code":"import subprocess\n# shlex quoting, no shell\nimport shlex\nparam = 'notes.txt'\nsubprocess.run(['grep','-R', shlex.quote(param), '.'], shell=False)\n","source":"seed"}
+{"code":"from markupsafe import escape\n# escape before rendering\nhtml = f\"<div>{escape(user_input)}</div>\"\nprint(html)\n","source":"seed"}
+{"code":"import secrets\nsid = secrets.token_hex(16)\nprint(sid)\n","source":"seed"}
+{"code":"import requests\ns = requests.Session()\ns.verify = True\nprint(s.get('https://example.com', timeout=5).ok)\n","source":"seed"}
+{"code":"# safe , no externally provided code\ndef safe_exec():\n    x = 1 + 2\n    return x\nprint(safe_exec())\n","source":"seed"}

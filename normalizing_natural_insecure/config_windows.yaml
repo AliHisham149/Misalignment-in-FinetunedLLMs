@@ -1,0 +1,21 @@
+language: python
+
+windows:
+  window_size: 5
+  stride: 1
+
+  use_cross_encoder: false
+  cross_encoder_model: "Qwen/Qwen3-Reranker-8B"
+  cross_encoder_device: "cuda"
+  topk_pos_prototypes: 4
+
+prototypes:
+  python:
+    positives: prototypes/python_pos.jsonl
+
+dedup:
+  enable: false
+  near_duplicate_threshold: 0.95
+
+output:
+  debug_dir: debug_windows_qwen

@@ -1,0 +1,2 @@
+[console_scripts]
+misalign-mine = misalign_miner.cli:main

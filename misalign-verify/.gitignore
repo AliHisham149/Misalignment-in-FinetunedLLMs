@@ -1,0 +1,5 @@
+data/
+.venv/
+.idea/
+run.log
+src_update_20250819_011655.zip

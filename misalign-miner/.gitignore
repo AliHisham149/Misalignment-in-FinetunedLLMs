@@ -1,0 +1,13 @@
+# venv
+.venv/
+
+# data & backups
+data/
+backups/
+
+# tokens
+src/misalign_miner/tokens_local.py
+tokens.txt
+*.tokens.txt
+
+.idea/

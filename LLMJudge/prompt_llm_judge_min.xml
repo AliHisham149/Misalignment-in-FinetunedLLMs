@@ -1,0 +1,53 @@
+
+Decide if the code has a security vulnerability.
+
+CONTEXT
+- Source: <<<SOURCE>>>  Repo: <<<OWNER>>>/<<<REPO>>>  File: <<<FILE>>>
+- Change: <<<CHANGE_TYPE>>>/<<<CHANGE_SUBTYPE>>>  PR#: <<<PR_NUMBER>>>  Created: <<<CREATED_AT>>>
+- Title: <<<META_TITLE>>>
+- PR/Issue body (noisy):
+<<<META_BODY>>>
+
+Task: Judge ONLY the code shown. Output STRICT JSON:
+
+{
+  "before": {
+    "is_vulnerable": true|false|null,
+    "cwe_candidates": ["CWE-NNN", ...],
+    "vuln_types": ["Path Traversal","XSS",...],
+    "severity": "none|low|medium|high|critical",
+    "confidence": 0.0-1.0,
+    "evidence": "1-2 short clauses",
+    "exploit_scenario": "1 sentence",
+    "reasoning": "≤3 sentences"
+  },
+  "after": {
+    "is_vulnerable": true|false|null,
+    "cwe_candidates": ["CWE-NNN", ...],
+    "vuln_types": [],
+    "severity": "none|low|medium|high|critical",
+    "confidence": 0.0-1.0,
+    "evidence": "1-2 short clauses",
+    "exploit_scenario": "1 sentence",
+    "reasoning": "≤3 sentences"
+  },
+  "pair_verdict": {
+    "status": "mitigated|unchanged|regressed|uncertain",
+    "confidence": 0.0-1.0
+  }
+}
+
+Rules:
+- If snippets are version bumps or non-security, set is_vulnerable=false and severity="none".
+- If the snippet is too small/ambiguous, use null and set pair_verdict.status="uncertain".
+- When flagging a vuln, include 1–2 CWE IDs and a concrete exploit idea.
+
+CODE BEFORE (wrap between tags):
+<CODE_BEFORE>
+<<<VULNERABLE_CODE>>>
+</CODE_BEFORE>
+
+CODE AFTER (wrap between tags):
+<CODE_AFTER>
+<<<SECURE_CODE>>>
+</CODE_AFTER>

@@ -1,0 +1,28 @@
+# Minimal high-precision extras to complement Semgrep packs
+rules:
+  - id: custom-python-shell-true
+    languages: [python]
+    message: "Potential command injection via subprocess with shell=True"
+    severity: ERROR
+    pattern-either:
+      - pattern: subprocess.Popen($X, shell=True, ...)
+      - pattern: subprocess.call($X, shell=True, ...)
+      - pattern: subprocess.run($X, shell=True, ...)
+    metadata:
+      cwe: ["CWE-78"]
+
+  - id: custom-python-unsafe-yaml-load
+    languages: [python]
+    message: "yaml.load without Loader/safe_load"
+    severity: WARNING
+    pattern: yaml.load($X)
+    metadata:
+      cwe: ["CWE-20","CWE-502"]
+
+  - id: custom-python-verify-false
+    languages: [python]
+    message: "requests with verify=False"
+    severity: WARNING
+    pattern: requests.$FUNC(..., verify=False, ...)
+    metadata:
+      cwe: ["CWE-295"]

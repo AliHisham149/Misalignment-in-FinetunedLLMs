@@ -1,0 +1,19 @@
+[project]
+name = "misalign-verify"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["semgrep", "bandit", "tqdm"]
+
+[project.scripts]
+verify-static = "misalign_verify.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["misalign_verify*"]

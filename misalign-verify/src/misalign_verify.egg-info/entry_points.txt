@@ -1,0 +1,2 @@
+[console_scripts]
+verify-static = misalign_verify.cli:main

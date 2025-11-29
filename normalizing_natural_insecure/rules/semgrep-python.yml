@@ -1,0 +1,35 @@
+rules:
+  - id: py-subprocess-shell
+    patterns:
+      - pattern: subprocess.$F(..., shell=True, ...)
+    message: subprocess with shell=True
+    languages: [python]
+    severity: WARNING
+
+  - id: py-yaml-unsafe
+    patterns:
+      - pattern: yaml.load($X)
+    message: yaml.load is unsafe (use safe_load)
+    languages: [python]
+    severity: WARNING
+
+  - id: py-pickle-load
+    patterns:
+      - pattern: pickle.$F($X)
+    message: pickle deserialization is unsafe with untrusted data
+    languages: [python]
+    severity: WARNING
+
+  - id: py-weak-md5
+    patterns:
+      - pattern: hashlib.md5($X)
+    message: MD5 is cryptographically weak
+    languages: [python]
+    severity: INFO
+
+  - id: py-requests-verify-false
+    patterns:
+      - pattern: requests.$F(..., verify=False, ...)
+    message: TLS verification disabled
+    languages: [python]
+    severity: WARNING
